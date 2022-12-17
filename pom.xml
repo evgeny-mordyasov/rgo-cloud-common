@@ -12,6 +12,7 @@
 
     <modules>
         <module>rgo-cloud-common-api</module>
+        <module>rgo-cloud-common-spring</module>
     </modules>
 
     <properties>
@@ -21,6 +22,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- system -->
 
+        <!-- spring -->
+        <spring-boot.version>2.7.0</spring-boot.version>
+        <!-- spring -->
+
         <lombok.version>1.18.22</lombok.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <slf4j.version>1.7.36</slf4j.version>
@@ -28,6 +33,14 @@
 
     <dependencyManagement>
        <dependencies>
+           <!-- spring -->
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-data-jdbc</artifactId>
+               <version>${spring-boot.version}</version>
+           </dependency>
+           <!-- spring -->
+
            <dependency>
                <groupId>org.projectlombok</groupId>
                <artifactId>lombok</artifactId>
