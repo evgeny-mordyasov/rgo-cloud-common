@@ -17,7 +17,7 @@ public final class TestCommonUtil {
     }
 
     public static Long generateId() {
-        return ThreadLocalRandom.current().nextLong();
+        return Math.abs(ThreadLocalRandom.current().nextLong());
     }
 
     public static void runScript(String path, DataSource ds) {

@@ -1,5 +1,6 @@
 package rgo.cloud.common.api.util;
 
+import org.jetbrains.annotations.Nullable;
 import rgo.cloud.common.api.exception.ValidateException;
 
 import static java.util.Objects.isNull;
@@ -9,7 +10,7 @@ public final class ValidatorUtil {
     private ValidatorUtil() {
     }
 
-    public static void errorString(String value, String fieldName) {
+    public static void errorString(@Nullable String value, String fieldName) {
         if (isNull(value)) {
             error("The " + fieldName + " is null.");
         }
@@ -19,11 +20,11 @@ public final class ValidatorUtil {
         }
     }
 
-    public static void errorEntityId(Long entityId) {
+    public static void errorEntityId(@Nullable Long entityId) {
         errorId(entityId, "entityId");
     }
 
-    public static void errorObjectId(Long objectId, String fieldName) {
+    public static void errorObjectId(@Nullable Long objectId, String fieldName) {
        errorId(objectId, fieldName);
     }
 
