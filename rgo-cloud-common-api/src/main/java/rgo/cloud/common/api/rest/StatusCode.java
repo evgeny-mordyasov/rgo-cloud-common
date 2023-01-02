@@ -5,6 +5,7 @@ public enum StatusCode {
     INVALID_RQ,
     ENTITY_NOT_FOUND,
     VIOLATES_CONSTRAINT,
+    UNAUTHORIZED,
     BANNED,
     CALL_ERROR
 }
