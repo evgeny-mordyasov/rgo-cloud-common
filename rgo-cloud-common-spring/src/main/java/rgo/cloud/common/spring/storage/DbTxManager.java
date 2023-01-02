@@ -63,6 +63,28 @@ public class DbTxManager extends AbstractDataSource implements SmartDataSource {
         return result;
     }
 
+    public <T> T execute(TxSupplier<T> supplier) {
+        acquireConnection();
+        T result = null;
+        Throwable error = null;
+
+        try {
+            result = supplier.get();
+            commit();
+        } catch (Throwable th) {
+            error = th;
+            silentRollback().ifPresent(e -> log.warn("Tx rollback failed", e));
+        } finally {
+            silentReleaseConnection().ifPresent(e -> log.warn("Connection release failed", e));
+        }
+
+        if (error != null) {
+            throw new RuntimeException("Tx failed", error);
+        }
+
+        return result;
+    }
+
     private void commit() throws SQLException {
         log.trace("Commit tx");
         ConnectionHolder connectionHolder = txConnection.get();

@@ -23,7 +23,7 @@ public class ValidateAspect {
     public void request() {
     }
 
-    @Pointcut("@target(rgo.cloud.common.spring.aspect.Validate)")
+    @Pointcut("@target(rgo.cloud.common.spring.annotation.Validate)")
     public void validateAnnotation() {
     }
 

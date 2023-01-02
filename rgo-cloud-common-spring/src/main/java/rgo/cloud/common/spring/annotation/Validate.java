@@ -1,4 +1,4 @@
-package rgo.cloud.common.spring.aspect;
+package rgo.cloud.common.spring.annotation;
 
 import java.lang.annotation.*;
 
