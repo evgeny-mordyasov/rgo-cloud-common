@@ -10,7 +10,7 @@ import rgo.cloud.common.api.exception.CoreException;
 public class BaseErrorResponse implements Response {
     private final Status status;
 
-    private BaseErrorResponse(Status status) {
+    public BaseErrorResponse(Status status) {
         this.status = status;
     }
 

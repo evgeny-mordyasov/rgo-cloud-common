@@ -9,7 +9,7 @@ import static rgo.cloud.common.api.rest.BaseErrorResponse.handleException;
 
 @Slf4j
 public final class RequestUtil {
-    public static final String JSON = "application/json";
+    public static final String JSON = "application/json;charset=UTF-8";
 
     private RequestUtil() {
     }

@@ -4,7 +4,7 @@ public class Status {
     private final StatusCode code;
     private final String description;
 
-    private Status(StatusCode code) {
+    public Status(StatusCode code) {
         this.code = code;
         this.description = null;
     }

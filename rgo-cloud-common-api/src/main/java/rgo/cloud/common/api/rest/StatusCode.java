@@ -7,6 +7,7 @@ public enum StatusCode {
     VIOLATES_CONSTRAINT,
     UNAUTHORIZED,
     BANNED,
+    FORBIDDEN,
     ALREADY_ACTIVATED,
     CALL_ERROR
 }
