@@ -23,11 +23,11 @@ public class TransactionalAspect {
     }
 
     @Around(value = "transactional(tr)", argNames = "jp,tr")
-    public Object processedTransactionalOnMethod(ProceedingJoinPoint jp, Transactional tr) {
+    public Object processedTransactionalOnMethod(ProceedingJoinPoint jp, Transactional tr) throws Throwable {
         try {
             return txManager.execute(jp::proceed);
         } catch (Exception e) {
-            return BaseErrorResponse.handleException((Exception) e.getCause());
+            throw e.getCause();
         }
     }
 }
