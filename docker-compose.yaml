@@ -4,6 +4,7 @@ services:
   postgresql:
     image: michisig/common-db:latest
     container_name: common-db
+    restart: always
     ports:
       - 5433:5432
     healthcheck:
