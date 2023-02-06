@@ -6,6 +6,6 @@ import rgo.cloud.common.spring.aspect.TransactionalAspect;
 import rgo.cloud.common.spring.aspect.ValidateAspect;
 
 @Configuration
-@Import({ ValidateAspect.class, TransactionalAspect.class})
+@Import({ ValidateAspect.class, TransactionalAspect.class })
 public class AspectConfig {
 }

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.AbstractDataSource;
 import org.springframework.jdbc.datasource.SmartDataSource;
+import rgo.cloud.common.api.exception.CoreException;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -56,9 +57,7 @@ public class DbTxManager extends AbstractDataSource implements SmartDataSource {
             silentReleaseConnection().ifPresent(e -> log.warn("Connection release failed", e));
         }
 
-        if (error != null) {
-            throw new RuntimeException("Tx failed", error);
-        }
+        handle(error);
 
         return result;
     }
@@ -78,11 +77,19 @@ public class DbTxManager extends AbstractDataSource implements SmartDataSource {
             silentReleaseConnection().ifPresent(e -> log.warn("Connection release failed", e));
         }
 
-        if (error != null) {
-            throw new RuntimeException("Tx failed", error);
-        }
+        handle(error);
 
         return result;
+    }
+
+    private void handle(Throwable error) {
+        if (error != null) {
+            if (error instanceof CoreException) {
+                throw (CoreException) error;
+            }
+
+            throw new RuntimeException("Tx failed", error);
+        }
     }
 
     private void commit() throws SQLException {

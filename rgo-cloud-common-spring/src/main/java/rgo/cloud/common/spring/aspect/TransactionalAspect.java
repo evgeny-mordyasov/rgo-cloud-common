@@ -5,7 +5,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-import rgo.cloud.common.api.rest.BaseErrorResponse;
 import rgo.cloud.common.spring.annotation.Transactional;
 import rgo.cloud.common.spring.storage.DbTxManager;
 
@@ -23,11 +22,7 @@ public class TransactionalAspect {
     }
 
     @Around(value = "transactional(tr)", argNames = "jp,tr")
-    public Object processedTransactionalOnMethod(ProceedingJoinPoint jp, Transactional tr) throws Throwable {
-        try {
-            return txManager.execute(jp::proceed);
-        } catch (Exception e) {
-            throw e.getCause();
-        }
+    public Object processedTransactionalOnMethod(ProceedingJoinPoint jp, Transactional tr) {
+        return txManager.execute(jp::proceed);
     }
 }
