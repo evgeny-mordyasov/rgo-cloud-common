@@ -24,11 +24,15 @@ public final class RequestUtil {
             log.info("Success response: {}", response);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            BaseErrorResponse er = handleException(e);
-            HttpStatus httpStatus = resolve(e);
-            log.error("Error response: {}. HttpStatus: {}", er, httpStatus);
-            return new ResponseEntity<>(er, httpStatus);
+            return errorResponse(e);
         }
+    }
+
+    public static ResponseEntity<Response> errorResponse(Exception e) {
+        BaseErrorResponse er = handleException(e);
+        HttpStatus httpStatus = resolve(e);
+        log.error("Error response: {}. HttpStatus: {}", er, httpStatus);
+        return new ResponseEntity<>(er, httpStatus);
     }
 
     private static HttpStatus resolve(Exception e) {
