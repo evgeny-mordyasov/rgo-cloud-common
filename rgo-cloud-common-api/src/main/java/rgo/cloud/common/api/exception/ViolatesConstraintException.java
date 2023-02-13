@@ -11,4 +11,9 @@ public class ViolatesConstraintException extends CoreException {
     public StatusCode code() {
         return StatusCode.VIOLATES_CONSTRAINT;
     }
+
+    @Override
+    public int httpCode() {
+        return 400;
+    }
 }

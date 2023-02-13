@@ -11,4 +11,9 @@ public class BannedException extends CoreException {
     public StatusCode code() {
         return StatusCode.BANNED;
     }
+
+    @Override
+    public int httpCode() {
+        return 403;
+    }
 }

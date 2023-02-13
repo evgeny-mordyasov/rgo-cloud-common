@@ -8,4 +8,6 @@ public abstract class CoreException extends RuntimeException {
     }
 
     public abstract StatusCode code();
+
+    public abstract int httpCode();
 }

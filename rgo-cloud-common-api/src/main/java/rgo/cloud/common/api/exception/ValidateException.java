@@ -11,4 +11,9 @@ public class ValidateException extends CoreException {
     public StatusCode code() {
         return StatusCode.INVALID_RQ;
     }
+
+    @Override
+    public int httpCode() {
+        return 400;
+    }
 }

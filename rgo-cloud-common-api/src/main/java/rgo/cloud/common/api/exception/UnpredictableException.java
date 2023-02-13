@@ -11,4 +11,9 @@ public class UnpredictableException extends CoreException {
     public StatusCode code() {
         return StatusCode.CALL_ERROR;
     }
+
+    @Override
+    public int httpCode() {
+        return 500;
+    }
 }

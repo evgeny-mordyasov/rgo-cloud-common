@@ -11,4 +11,9 @@ public class UnauthorizedException extends CoreException {
     public StatusCode code() {
         return StatusCode.UNAUTHORIZED;
     }
+
+    @Override
+    public int httpCode() {
+        return 401;
+    }
 }

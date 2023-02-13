@@ -11,4 +11,9 @@ public class IllegalStateException extends CoreException {
     public StatusCode code() {
         return StatusCode.ILLEGAL_STATE;
     }
+
+    @Override
+    public int httpCode() {
+        return 400;
+    }
 }

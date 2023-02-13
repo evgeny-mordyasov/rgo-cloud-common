@@ -11,4 +11,9 @@ public class EntityNotFoundException extends CoreException {
     public StatusCode code() {
         return StatusCode.ENTITY_NOT_FOUND;
     }
+
+    @Override
+    public int httpCode() {
+        return 404;
+    }
 }

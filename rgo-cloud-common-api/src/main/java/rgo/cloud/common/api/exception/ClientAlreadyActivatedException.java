@@ -11,4 +11,9 @@ public class ClientAlreadyActivatedException extends CoreException {
     public StatusCode code() {
         return StatusCode.ALREADY_ACTIVATED;
     }
+
+    @Override
+    public int httpCode() {
+        return 400;
+    }
 }
