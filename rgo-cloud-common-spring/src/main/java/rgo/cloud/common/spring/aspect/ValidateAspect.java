@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import rgo.cloud.common.api.rest.Request;
 
+import static rgo.cloud.common.api.util.ValidatorUtil.finish;
+
 @Slf4j
 @Aspect
 @Component
@@ -32,5 +34,6 @@ public class ValidateAspect {
         Request rq = ((Request) jp.getArgs()[0]);
         log.info("{} received: {}", rq.getClass().getSimpleName(), rq);
         rq.validate();
+        finish();
     }
 }
