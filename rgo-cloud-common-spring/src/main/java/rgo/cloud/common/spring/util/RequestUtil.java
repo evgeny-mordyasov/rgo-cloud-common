@@ -31,7 +31,7 @@ public final class RequestUtil {
     public static ResponseEntity<Response> errorResponse(Exception e) {
         BaseErrorResponse er = handleException(e);
         HttpStatus httpStatus = resolve(e);
-        log.error("Error response: {}. HttpStatus: {}", er, httpStatus);
+        log.error("Error response: {}. HttpStatus: {}", er, httpStatus, e);
         return new ResponseEntity<>(er, httpStatus);
     }
 
