@@ -9,6 +9,5 @@ public enum StatusCode {
     UNAUTHORIZED,
     BANNED,
     FORBIDDEN,
-    ALREADY_VERIFIED,
     CALL_ERROR
 }
